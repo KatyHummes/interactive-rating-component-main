@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>interactive rating component</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="main-card" id="inputDiv">
+    <img src="images/icon-star.svg" alt="star" class="star">
+    <h1>How did we do?</h1>
+    <p> Please let us know how we did with your support request. All feedback is appreciated
+      to help us improve our offering!</p>
+    <form id="form">
+      <div class="numbers">
+        <div class="radio-input">
+          <input type="radio" name="rating" id="rating1" value="1">
+          <label class="radio-label" for="rating1">1</label>
+        </div>
+        <div class="radio-input">
+          <input type="radio" name="rating" id="rating2" value="2">
+          <label class="radio-label" for="rating2">2</label>
+        </div>
+        <div class="radio-input">
+          <input type="radio" name="rating" id="rating3" value="3">
+          <label class="radio-label" for="rating3">3</label>
+        </div>
+        <div class="radio-input">
+          <input type="radio" name="rating" id="rating4" value="4">
+          <label class="radio-label" for="rating4">4</label>
+        </div>
+        <div class="radio-input">
+          <input type="radio" name="rating" id="rating5" value="5">
+          <label class="radio-label" for="rating5">5</label>
+        </div>
+      </div>
+      <button type="submit">SUBMIT</button>
+    </form>
+  </div>
+  <div class="thank-you" id="resultDiv">
+    <img src="images/illustration-thank-you.svg" alt="thank-you">
+
+    <h2>You selected <span id="resultado"></span> out of 5</h2> 
+
+    <h1>Thank you!</h1>
+
+    <p> We appreciate you taking the time to give a rating. If you ever need more support,
+      don’t hesitate to get in touch!</p>
+
+  </div>
+</body>
+
+</html>
+<script>
+  //quando o usuário clicar no botão, vai chamar o evento de submit.
+  document.getElementById('form').addEventListener('submit', function (e) {
+    e.preventDefault(); //previne que a página seja atualizada.
+
+    document.getElementById('resultDiv').style.display = 'flex'; // altera o display para flex
+    document.getElementById('inputDiv').style.display = 'none'; // altera o display para none
+
+    // vai selecionar o input com o name = rating que estiver selecionado (checked) e vai pegar o valor
+    const selectedRating = document.querySelector('input[name="rating"]:checked').value;
+
+    // vamos atribuir o valor que foi capturado na linha acima para o nosso elemento com o id resultado.
+    document.getElementById('resultado').textContent = selectedRating;
+
+  });
+</script>
